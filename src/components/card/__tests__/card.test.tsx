@@ -3,6 +3,7 @@ import Card, { CardProps } from "../card";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { NO_IMAGE_ALT } from "../../../helpers/constants";
 
 describe("<Card />", () => {
   let props: CardProps;
@@ -22,7 +23,7 @@ describe("<Card />", () => {
       const author = screen.getByText("Author: " + props.podcast.author);
       expect(author).toBeInTheDocument();
 
-      const altImage = screen.getByAltText("No Image");
+      const altImage = screen.getByAltText(NO_IMAGE_ALT);
       expect(altImage).toBeInTheDocument();
     });
   });
