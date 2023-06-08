@@ -1,0 +1,65 @@
+@import "../../../styles/_variables";
+@import "../../../styles/_mixins";
+
+.summary {
+    display: grid;
+    max-width: 300px;
+    @include card--shadowed-box;
+
+    &__header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: $medium-padding;
+    }
+
+    &__thumbnail {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    &__row {
+        padding: $medium-padding 0;
+    }
+
+    &__title
+    {
+        font-size: $medium-font-size;
+        font-weight: 600;
+        cursor: pointer;
+        @include truncated--text;
+    }
+
+    &__author
+    {
+        color: $medium-gray-color;
+        font-size: $extra-small-font-size;
+        font-style: italic;
+        cursor: pointer;
+    }
+
+    &__description
+    {
+        color: $medium-gray-color;
+        font-size: .55rem;
+        font-style: italic;
+    }
+}
+
+@media screen and (min-width:$medium-breakpoint){
+    .summary {
+        &__header {
+            display: block;
+            justify-content: inherit;
+            align-items: inherit;
+        }
+
+        &__thumbnail {
+            width: 256px;
+            height: 256px;
+            border-radius: 0%;
+        }
+    }
+}
