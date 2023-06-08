@@ -1,0 +1,24 @@
+@import "../../../styles/_variables";
+@import "../../../styles/_mixins";
+
+.episode-detail {
+  display: flex;
+  flex-direction: column;
+  padding: $medium-padding;
+  @include card--shadowed-box;
+
+  &__title {
+    font-size: $medium-font-size;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  &__description {
+    font-size: $small-font-size;
+    margin-bottom: 1.2rem;
+  }
+
+  &__audio {
+    width: 100%;
+  }
+}

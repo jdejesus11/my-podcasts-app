@@ -4,6 +4,7 @@ import CardList from "./components/card-list/card-list";
 import Card from "./components/card/card";
 import CounterBar from "./components/counter-bar/counter-bar";
 import DataGrid from "./components/data-grid/data-grid";
+import EpisodeDetail from "./components/episode-detail/episode-detail";
 import Spinner from "./components/spinner/spinner";
 import Summary from "./components/summary/summary";
 import TextInput from "./components/text-input/text-input";
@@ -65,6 +66,7 @@ const App = () => {
       </div>
       <Spinner />
       <CounterBar title={"Episodes: 66"} />
+      <EpisodeDetail episode={{id:"1", title:"Episode 1"}} />
     </>
   );
 };
