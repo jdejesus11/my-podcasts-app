@@ -1,0 +1,57 @@
+@import "../../../styles/_variables";
+@import "../../../styles/_mixins";
+
+.table {
+  width: 100%;
+  @include card--shadowed-box;
+
+  &__header {
+    display: flex;
+  }
+
+  &__row {
+    display: flex;
+    width: 100%;
+  }
+
+  &__header-cell {
+    font-weight: 600;
+  }
+
+  &__header-cell,
+  &__cell {
+    padding: 0.3rem;
+    width: 100px;
+    font-size: $small-font-size;
+  }
+
+  &__no-data {
+    display: block;
+    text-align: center;
+  }
+
+  &--expanded {
+    flex: 1;
+    text-align: left;
+  }
+
+  &--centered {
+    text-align: center;
+  }
+
+  &--background-filled {
+    background-color: $extra-light-color;
+  }
+
+  &--detail {
+    color: $light-aquamarine-color;
+    &:hover {
+      text-decoration: underline;
+      transition: 0.5s;
+      color: $extra-light-aquamarine-color;
+    }
+    & a {
+      cursor: pointer;
+    }
+  }
+}

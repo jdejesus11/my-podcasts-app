@@ -9,7 +9,7 @@ const config = {
     '\\.(css|less|scss|sass|png)$': "identity-obj-proxy"
   }, 
   "transform": {
-    "\\.tsx$": "babel-jest"
+    "\\.(tsx|ts)$": "babel-jest"
   }
 };
 
@@ -26,7 +26,7 @@ module.exports = async () => {
       '\\.(css|less|scss|sass)$': "identity-obj-proxy"
     }, 
     "transform": {
-      "\\.tsx$": "babel-jest"
+      "\\.(tsx|ts)$": "babel-jest"
     }
   };
 };
