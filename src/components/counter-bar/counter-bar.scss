@@ -1,0 +1,9 @@
+@import "../../../styles/_variables";
+@import "../../../styles/_mixins";
+
+.counter-bar {
+    width: 100%;
+    font-size: $medium-font-size;
+    font-weight: 600;
+    @include card--shadowed-box;
+}

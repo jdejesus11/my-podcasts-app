@@ -2,6 +2,7 @@ import React from "react";
 import "./App.scss";
 import CardList from "./components/card-list/card-list";
 import Card from "./components/card/card";
+import CounterBar from "./components/counter-bar/counter-bar";
 import DataGrid from "./components/data-grid/data-grid";
 import Spinner from "./components/spinner/spinner";
 import Summary from "./components/summary/summary";
@@ -63,6 +64,7 @@ const App = () => {
         <Summary podcast={{ id: "1", title: "Episode 1", author: "Kania W." }} />
       </div>
       <Spinner />
+      <CounterBar title={"Episodes: 66"} />
     </>
   );
 };
