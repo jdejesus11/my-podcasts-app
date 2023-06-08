@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.scss";
+import CardList from "./components/card-list/card-list";
 import Card from "./components/card/card";
 import DataGrid from "./components/data-grid/data-grid";
 import TextInput from "./components/text-input/text-input";
@@ -45,7 +46,10 @@ const App = () => {
           ]}
         />
       </div>
-      <Card podcast={{id:"1", title:"Kenny G"}} />
+      <div>
+        <CardList podcasts={[{id:"1", title:"Episode 1", author:"Kania W."},{id:"1", title:"Episode 1", author:"Kania W."},{id:"1", title:"Episode 1", author:"Kania W."},{id:"1", title:"Episode 1", author:"Kania W."},{id:"1", title:"Episode 1", author:"Kania W."}]}          
+        />
+      </div>
     </>
   );
 };
