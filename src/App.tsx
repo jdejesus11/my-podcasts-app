@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.scss";
+import Card from "./components/card/card";
 import DataGrid from "./components/data-grid/data-grid";
 import TextInput from "./components/text-input/text-input";
 
@@ -36,14 +37,15 @@ const App = () => {
       <div>
         <DataGrid 
           data={[
-            {title:"Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.", date:"01/01/2012", duration:"12:00"},
-            {title:"Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.", date:"01/01/2012", duration:"12:00"},
-            {title:"Episode 1", date:"01/01/2012", duration:"12:00"},
-            {title:"Episode 1", date:"01/01/2012", duration:"12:00"},
-            {title:"Episode 1", date:"01/01/2012", duration:"12:00"},
+            {id:"1",title:"Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.", date:"01/01/2012", duration:"12:00"},
+            {id:"1",title:"Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.", date:"01/01/2012", duration:"12:00"},
+            {id:"1",title:"Episode 1", date:"01/01/2012", duration:"12:00"},
+            {id:"1",title:"Episode 1", date:"01/01/2012", duration:"12:00"},
+            {id:"1",title:"Episode 1", date:"01/01/2012", duration:"12:00"},
           ]}
         />
       </div>
+      <Card podcast={{id:"1", title:"Kenny G"}} />
     </>
   );
 };

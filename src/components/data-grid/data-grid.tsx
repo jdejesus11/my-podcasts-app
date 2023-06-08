@@ -8,8 +8,8 @@ export interface DataGridProps<T extends Episode> {
 
 export const NO_DATA_AVAILABLE = "No episodes available";
 
-export type RowProps = { className: string } & React.PropsWithChildren;
-export type CellProps = { className: string } & React.PropsWithChildren;
+export type RowProps = { className?: string } & React.PropsWithChildren;
+export type CellProps = { className?: string } & React.PropsWithChildren;
 export type LinkProps = { onClick: () => void } & React.PropsWithChildren;
 
 const isEven = (index: number) => {
@@ -30,7 +30,9 @@ const Link = ({ onClick, children }: LinkProps) => {
 
 const renderNoDataAvailable = () => (
   <Row className="table__no-data">
-    <span>{NO_DATA_AVAILABLE}</span>
+    <Cell>
+      {NO_DATA_AVAILABLE}
+    </Cell>
   </Row>
 );
 
