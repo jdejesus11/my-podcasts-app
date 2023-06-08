@@ -3,6 +3,7 @@ import "./App.scss";
 import CardList from "./components/card-list/card-list";
 import Card from "./components/card/card";
 import DataGrid from "./components/data-grid/data-grid";
+import Spinner from "./components/spinner/spinner";
 import Summary from "./components/summary/summary";
 import TextInput from "./components/text-input/text-input";
 
@@ -61,6 +62,7 @@ const App = () => {
       <div>
         <Summary podcast={{ id: "1", title: "Episode 1", author: "Kania W." }} />
       </div>
+      <Spinner />
     </>
   );
 };
