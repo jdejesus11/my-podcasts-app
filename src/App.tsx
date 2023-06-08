@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.scss";
+import TextInput from "./components/text-input";
 
 const App = () => {
   return (
@@ -25,6 +26,12 @@ const App = () => {
         punto de usar Lorem Ipsum es que tiene una distribución más o menos
         normal de las letras
       </p>
+      <TextInput
+        onChange={(value: string) => {
+          console.log(value);
+        }}
+        placeholder="Filter podcasts..."
+      />
     </>
   );
 };
