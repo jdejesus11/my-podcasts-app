@@ -1,0 +1,28 @@
+// font families
+$font-primary: "Poppins", sans-serif;
+
+// colors
+$light-aquamarine-color: #145b87;
+$black-color: #120907;
+$extra-light-color: #f4f4f4;
+$light-gray-color: rgba(119, 119, 124, 0.51);
+$medium-gray-color: #77777c;
+
+// font sizes
+$root-font-size: 1.4rem;
+
+$extra-large-font-size: 1.4rem;
+$large-font-size: 1.2rem;
+$medium-font-size: 1rem;
+$small-font-size: 0.8rem;
+$extra-small-font-size: 0.65rem;
+
+// gutters
+$small-padding: 12px;
+$medium-padding: 22px;
+$extra-large-padding: 66px;
+
+$extra-large-margin: $extra-large-padding;
+
+//breakpoints
+$medium-breakpoint: 772px;
