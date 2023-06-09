@@ -1,0 +1,10 @@
+@import "../../../styles/_variables";
+@import "../../../styles/_mixins";
+
+.message {
+  text-align: center;
+  padding: $small-padding;
+  font-size: $small-font-size;
+  background-color: $dark-blue-color;
+  color: $extra-light-color;
+}
