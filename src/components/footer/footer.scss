@@ -1,0 +1,11 @@
+@import "../../../styles/_variables";
+
+.footer {
+  color: $extra-light-color;
+  height: 44px;
+  background-color: $light-aquamarine-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $extra-small-font-size;
+}

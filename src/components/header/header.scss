@@ -1,0 +1,15 @@
+
+@import "../../../styles/_variables";
+
+.header {
+    width: 100%;
+    padding: $medium-padding;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: $large-font-size;
+    color: $light-aquamarine-color;
+    cursor: pointer;
+}
