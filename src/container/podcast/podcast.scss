@@ -1,4 +1,22 @@
-.podcast-detail-container{
+@import "../../../styles/_variables";
+
+.podcast{
     display: grid;
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 1fr;
+
+    &__summary{
+        margin-bottom: $medium-padding;
+    }
+}
+
+
+@media (min-width: $medium-breakpoint){
+    .podcast{
+        display: grid;
+        grid-template-columns: 400px 1fr;
+    }
+
+    &__summary{
+        margin-bottom: 0;
+    }
 }

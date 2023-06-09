@@ -3,7 +3,7 @@
 
 .summary {
     display: grid;
-    max-width: 300px;
+    width: 100%;
     @include card--shadowed-box;
 
     &__header{
@@ -50,6 +50,7 @@
 
 @media screen and (min-width:$medium-breakpoint){
     .summary {
+        width: 300px;
         &__header {
             display: block;
             justify-content: inherit;
