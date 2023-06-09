@@ -1,1 +1,10 @@
 @import "../styles/reset.scss";
+
+#container {
+  min-height: 100vh;
+}
+
+.main {
+  padding: $medium-padding;
+  flex: 1;
+}
