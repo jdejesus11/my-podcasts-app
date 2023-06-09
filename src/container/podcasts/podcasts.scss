@@ -1,0 +1,12 @@
+@import "../../../styles/_variables";
+
+.podcast-filtering {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: $extra-large-margin;
+}
+
+.podcast-list{
+    display: flex;
+    width: 100%;
+}

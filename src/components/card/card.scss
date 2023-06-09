@@ -35,5 +35,6 @@
         font-size: $small-font-size;
         flex: 1;
         @include truncated--text;
+        text-align: center;
     }
 }
