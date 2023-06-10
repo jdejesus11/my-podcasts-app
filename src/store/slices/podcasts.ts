@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { SERVICE_ERROR } from "../../helpers/constants";
 import { fromContentToPodcasts } from "../../helpers/mappers";
 import { Podcast } from "../../models/models";
 import { fetchMostRelevantPodcastService } from "../../services/podcasts";
@@ -28,9 +27,6 @@ export const podcastsSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchMostRelevantPodcast.fulfilled, (state, action) => {
             state.podcasts = action.payload ?? [];
-        }).addCase(fetchMostRelevantPodcast.rejected, (state) => {
-            console.log(`${SERVICE_ERROR}: fetching most relevant podcasts`)
-            state.podcasts = [];
         })
     }
 })

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export const isLoadingSlice = createSlice({
-    name: "is-loading",
+    name: "isLoading",
     initialState: false,
     reducers: {
         activateLoading: (state, action: PayloadAction<boolean>) => {
-            state = action.payload;
+            return action.payload;
         }
     }
 })

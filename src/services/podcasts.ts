@@ -5,7 +5,7 @@ const PODCAST_URL = `https://api.allorigins.win/get?url=${encodeURIComponent("ht
 export const fetchMostRelevantPodcastService = async () => {
     try {
         const response = await fetch(PODCAST_URL);
-        if (response.ok){
+        if (!response.ok){
             throw new Error(response.status.toString())
         }
         const results: ResponseType = await response.json();
