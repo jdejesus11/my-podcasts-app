@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { SERVICE_ERROR } from "../../helpers/constants";
 import { fromContentToEpisodes } from "../../helpers/mappers";
 import { Episode } from "../../models/models";
 import { fetchPodcastDetailService } from "../../services/podcast-detail";

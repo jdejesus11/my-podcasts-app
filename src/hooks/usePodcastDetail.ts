@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
-import { RootState, Dispatch, selectIsLoading, selectPodcastDetail } from "../store/store";
+import { RootState, Dispatch, selectStatus, selectPodcastDetail } from "../store/store";
 import { useEffect } from "react";
 
 export const useAppDispatch: () => Dispatch = useDispatch;
@@ -13,7 +13,7 @@ export const usePodcastDetail = () => {
   }, []);
 
   const data = useSelector(selectPodcastDetail);
-  const isLoading = useSelector(selectIsLoading);
+  const status = useSelector(selectStatus);
 
-  return [{ episodes: data.episodes, isLoading }];
+  return [{ episodes: data.episodes, status }];
 };

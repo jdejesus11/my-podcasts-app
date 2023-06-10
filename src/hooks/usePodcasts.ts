@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
-import { RootState, Dispatch, selectPodcasts, selectIsLoading } from "../store/store";
+import { RootState, Dispatch, selectPodcasts, selectStatus } from "../store/store";
 import { useEffect, useState } from "react";
 import { fetchMostRelevantPodcast } from "../store/slices/podcasts";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { SERVICE_ERROR } from "../helpers/constants";
-import { activateLoading } from "../store/slices/is-loading";
+import { activateStatus, Status } from "../store/slices/status";
 
 export const useAppDispatch: () => Dispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -17,21 +17,24 @@ export const usePodcasts = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        dispatch(activateLoading(true));
+        dispatch(activateStatus(Status.FetchingData));
         const resultAction = await dispatch(fetchMostRelevantPodcast());
         unwrapResult(resultAction);
+        dispatch(activateStatus(null));
       } catch (error) {
         console.log(`${SERVICE_ERROR}: fetching most relevant podcasts`);
-      } finally {
-        dispatch(activateLoading(false));
+        dispatch(activateStatus(Status.ServiceFailed))
       }
     }
     fetchData();
   }, []);
 
   const data = useSelector(selectPodcasts);
-  const filteredData = data.podcasts.filter((podcast) => podcast.title.toLowerCase().includes(query) || podcast.author.toLowerCase().includes(query));
-  const isLoading = useSelector(selectIsLoading);
+  const filteredData = query != "" ? data.podcasts.filter((podcast) => podcast.title.toLowerCase().includes(query) || podcast.author.toLowerCase().includes(query)) : data.podcasts;
+  const status = useSelector(selectStatus);
+  console.log("STATUS",status)
+  const isLoading = status === Status.FetchingData;
+  const fetchingFailed = status === Status.ServiceFailed;
 
-  return [{ podcasts: query != "" ? filteredData : data.podcasts, isLoading, query }, { setQuery }];
+  return [{ podcasts: filteredData, isLoading, fetchingFailed, query }, { setQuery }];
 };

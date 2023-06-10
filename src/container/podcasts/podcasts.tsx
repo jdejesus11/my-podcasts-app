@@ -1,7 +1,8 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import CardList from "../../components/card-list/card-list";
+import MessageBanner from "../../components/message-banner/message-banner";
 import TextInput from "../../components/text-input/text-input";
+import { PODCASTS_FETCHING_MESSAGE } from "../../helpers/constants";
 import { usePodcasts } from "../../hooks/usePodcasts";
 import "./podcasts.scss";
 
@@ -14,7 +15,11 @@ const Podcasts = () => {
 
   return (
     <>
-      {!state.isLoading && (
+      {
+        state.isLoading && 
+        <MessageBanner message={PODCASTS_FETCHING_MESSAGE}  />
+      }
+      {!state.isLoading && !state.fetchingFailed && (
         <>
           <section className="podcast-filtering">
             <TextInput
