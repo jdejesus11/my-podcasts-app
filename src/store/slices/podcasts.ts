@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fromContentToPodcasts } from "../../helpers/helpers";
+import { fromContentToPodcasts } from "../../helpers/mappers";
 import { Podcast } from "../../models/models";
 import { fetchMostRelevantPodcastService } from "../../services/podcasts";
 

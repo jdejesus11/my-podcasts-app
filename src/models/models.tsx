@@ -1,6 +1,11 @@
+export enum Kind {
+  "podcast" = "podcast",
+  "podcast-episode" = "podcast-episode"
+}
+
 export interface PodcastAPI {
     wrapperType: string,
-    kind: string,
+    kind: Kind,
     collectionId: string,
     trackId: string,
     artistName: string,
@@ -20,18 +25,36 @@ export interface PodcastAPI {
     collectionExplicitness: string,
     trackExplicitness: string,
     trackCount: string,
-    trackTimeMillis: string,
+    trackTimeMillis: number,
     artworkUrl600: string,
     genres: string[],
     primaryGenreName: string
 }
 
+export interface EpisodeAPI {
+  kind: Kind,
+  episodeUrl: string,
+  previewUrl: string,
+  artworkUrl600:string,
+  description: string,
+  trackName: string,
+  trackId: string,
+  episodeContentType: string,
+  trackViewUrl: string,
+  trackTimeMillis: number,
+  releaseDate: string
+}
+
 export type PodcastType = {
-  results: Partial<PodcastAPI>[]
+  results: Partial<PodcastAPI >[] 
+}
+
+export type EpisodeType = {
+  results: Partial<EpisodeAPI | PodcastAPI>[]
 }
 
 export interface ResponseType {
-    contents: string
+  contents: string
 }
 
 export interface Multimedia {
