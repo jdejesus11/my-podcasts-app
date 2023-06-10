@@ -7,6 +7,7 @@ export const fromContentToPodcasts = (data: PodcastType) => {
       id: item.trackId,
       author: item.artistName,
       title: item.collectionName,
+      thumbnailURL: item.artworkUrl600
     } as Podcast;
   });
 };
