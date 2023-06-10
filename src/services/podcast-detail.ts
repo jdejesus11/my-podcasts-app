@@ -13,6 +13,7 @@ export const fetchPodcastDetailService = async (podcastId: string) => {
         return JSON.parse(results.contents) as EpisodeType;
     }
     catch(error){
-        console.log("Error",error)
+        console.log(error)
+        return Promise.reject([]);
     }
 }
