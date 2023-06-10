@@ -3,6 +3,7 @@ import CounterBar from "../../components/counter-bar/counter-bar";
 import DataGrid from "../../components/data-grid/data-grid";
 import "./episode.scss";
 
+
 const Episode = () => {
   return (
     <>

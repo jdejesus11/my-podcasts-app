@@ -3,17 +3,25 @@ import { Podcast } from "../../models/models";
 import "./card.scss";
 import defaultImage from "../../assets/noimage.png";
 import { NO_IMAGE_ALT, UKNOWN } from "../../helpers/constants";
+import useRouting from "../../hooks/useNavigation";
 
 export interface CardProps {
   podcast: Podcast;
 }
 
 const Card = ({ podcast }: CardProps) => {
+
+  const [navigation] = useRouting();
+
+  const onClick = (podcastId:string) => {
+    navigation.navigateTo(`/podcasts/${podcastId}`)
+  }
+
   return (
     <li
       className="card"
       onClick={() => {
-        console.log("click");
+        onClick(podcast.id)
       }}
     >
       <header className="card__thumbnail-container">

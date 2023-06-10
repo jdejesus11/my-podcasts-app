@@ -18,8 +18,9 @@ export const fromContentToEpisodes = (data: EpisodeType) => {
       return {
         id: item.trackId,
         title: "trackName" in item ? item.trackName : null,
-        author: "artistName" in item ? item.artistName : null
-      }
+        author: "artistName" in item ? item.artistName : null,
+        thumbnailURL: "artworkUrl600" in item ? item.artworkUrl600 : null,
+      } as Podcast
     }
 
     return {
@@ -27,6 +28,7 @@ export const fromContentToEpisodes = (data: EpisodeType) => {
       description: item.trackName,
       duration: toMinutesAndSecods(item.trackTimeMillis ?? 0),
       date: item.releaseDate ? toDate(item.releaseDate) : null,
+      
     } as Episode;
   });
 };

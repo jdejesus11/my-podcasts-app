@@ -1,4 +1,4 @@
-import { EpisodeType, Kind, PodcastAPI, PodcastType } from "../../models/models";
+import { Episode, EpisodeType, Kind, PodcastAPI, PodcastType } from "../../models/models";
 import { fromContentToEpisodes, fromContentToPodcasts } from "../mappers";
 
 describe("Mappers", () => {
@@ -48,7 +48,7 @@ describe("Mappers", () => {
 
       expect(response.results[1].trackId).toEqual(podcasts[1].id);
       expect(response.results[1].trackName).toEqual(podcasts[1].description);
-      expect(podcasts[1].duration).toEqual("0:06");
+      expect((podcasts[1] as Episode).duration).toEqual("0:06");
     });
   });
 });
