@@ -1,4 +1,4 @@
-import { Episode, EpisodeType, Kind, Podcast, PodcastAPI, PodcastType } from "../models/models";
+import { Episode, EpisodeType, Kind, Podcast, PodcastType } from "../models/models";
 import { toDate, toMinutesAndSecods } from "./helpers";
 
 export const fromContentToPodcasts = (data: PodcastType) => {
