@@ -10,7 +10,7 @@ const Episode = () => {
   return (
     <>
       <div className="episode-counter">
-        <CounterBar title={`Episodes: 66`} />
+        <CounterBar title={`Episodes: ${episodes.length}`} />
       </div>
       <DataGrid data={episodes} />
     </>

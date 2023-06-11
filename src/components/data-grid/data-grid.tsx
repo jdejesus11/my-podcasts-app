@@ -1,4 +1,6 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+import useRouting from "../../hooks/useNavigation";
 import { Episode } from "../../models/models";
 import "./data-grid.scss";
 
@@ -52,6 +54,8 @@ const Grid = ({ children }: React.PropsWithChildren) => {
 };
 
 const DataGrid = ({ data }: DataGridProps<Episode>) => {
+  const [navigate] = useRouting();
+  const path = useLocation()
   return (
     <Grid>
       {data.map((item, key) => {
@@ -60,7 +64,8 @@ const DataGrid = ({ data }: DataGridProps<Episode>) => {
             <Cell className="table__cell table--expanded table--detail">
               <Link
                 onClick={() => {
-                  console.log("click");
+                    const url = `${path.pathname}/episodes/${item.id}`;
+                    navigate.navigateTo(url)
                 }}
               >
                 {item.title}

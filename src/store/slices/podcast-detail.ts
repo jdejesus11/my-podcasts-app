@@ -20,15 +20,14 @@ export const podcastSlice = createSlice({
   name: "podcast",
   initialState: podcastDetailInitialState,
   reducers: {
-    initialize: (state, action: PayloadAction<Episode[]>) => {
+    initialize: (state, action: PayloadAction<Episode[] | null>) => {
       state.episodes = action.payload;
     },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(fetchPodcastDetail.fulfilled, (state, action) => {
-        state.episodes = action.payload ?? [];
-      })
+    builder.addCase(fetchPodcastDetail.fulfilled, (state, action) => {
+      state.episodes = action.payload ?? [];
+    });
   },
 });
 

@@ -12,8 +12,12 @@ export const useAppDispatch: () => Dispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const usePodcastDetail = () => {
-  const { podcastId } = useParams();
+  const { podcastId, episodeId } = useParams();
   const dispatch = useDispatch<Dispatch>();
+  const data = useSelector(selectPodcastDetail);
+  const status = useSelector(selectStatus);
+  const isLoading = status === Status.FetchingData;
+  const fetchingFailed = status === Status.ServiceFailed;
 
   useEffect(() => {
     async function fetchData() {
@@ -28,12 +32,7 @@ export const usePodcastDetail = () => {
       }
     }
     fetchData();
-  }, []);
-
-  const data = useSelector(selectPodcastDetail);
-  const status = useSelector(selectStatus);
-  const isLoading = status === Status.FetchingData;
-  const fetchingFailed = status === Status.ServiceFailed;
+  }, [episodeId, podcastId]);
 
   return [{ episodes: data.episodes, isLoading, fetchingFailed }];
 };

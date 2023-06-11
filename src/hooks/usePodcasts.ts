@@ -1,6 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
-import { RootState, Dispatch, selectPodcasts, selectStatus } from "../store/store";
+import {
+  RootState,
+  Dispatch,
+  selectPodcasts,
+  selectStatus,
+} from "../store/store";
 import { useEffect, useState } from "react";
 import { fetchMostRelevantPodcast } from "../store/slices/podcasts";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -20,21 +25,31 @@ export const usePodcasts = () => {
         dispatch(activateStatus(Status.FetchingData));
         const resultAction = await dispatch(fetchMostRelevantPodcast());
         unwrapResult(resultAction);
-        dispatch(activateStatus(null));
       } catch (error) {
         console.log(`${SERVICE_ERROR}: fetching most relevant podcasts`);
-        dispatch(activateStatus(Status.ServiceFailed))
+        dispatch(activateStatus(Status.ServiceFailed));
+      } finally {
+        dispatch(activateStatus(null));
       }
     }
     fetchData();
   }, []);
 
   const data = useSelector(selectPodcasts);
-  const filteredData = query != "" ? data.podcasts.filter((podcast) => podcast.title.toLowerCase().includes(query) || podcast.author.toLowerCase().includes(query)) : data.podcasts;
+  const filteredData =
+    query != ""
+      ? data.podcasts.filter(
+          (podcast) =>
+            podcast.title.toLowerCase().includes(query) ||
+            podcast.author.toLowerCase().includes(query)
+        )
+      : data.podcasts;
   const status = useSelector(selectStatus);
-  console.log("STATUS",status)
   const isLoading = status === Status.FetchingData;
   const fetchingFailed = status === Status.ServiceFailed;
 
-  return [{ podcasts: filteredData, isLoading, fetchingFailed, query }, { setQuery }];
+  return [
+    { podcasts: filteredData, isLoading, fetchingFailed, query },
+    { setQuery },
+  ];
 };

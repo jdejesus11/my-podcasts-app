@@ -8,6 +8,7 @@ export interface EpisodeDetailProps {
 }
 
 const EpisodeDetail = ({ episode }: EpisodeDetailProps) => {
+  console.log("vvvvv",episode)
   return (
     <div className="episode-detail">
       <h2 className="episode-detail__title">{episode.title}</h2>
