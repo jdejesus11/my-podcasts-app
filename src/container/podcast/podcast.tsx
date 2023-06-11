@@ -18,7 +18,9 @@ const Podcast = () => {
               <Summary podcast={data.episodes[0]} />
             </section>
             <section>
-              <Outlet />
+              <Outlet
+                context={data.episodes.filter((__, index) => index > 0)}
+              />
             </section>
           </>
         </div>

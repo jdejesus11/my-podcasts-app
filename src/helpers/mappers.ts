@@ -28,6 +28,7 @@ export const fromContentToEpisodes = (data: EpisodeType) => {
       description: item.trackName,
       duration: toMinutesAndSecods(item.trackTimeMillis ?? 0),
       date: item.releaseDate ? toDate(item.releaseDate) : null,
+      title: item.trackName
       
     } as Episode;
   });
