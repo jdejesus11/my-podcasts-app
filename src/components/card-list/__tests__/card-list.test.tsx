@@ -4,6 +4,12 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
+const mockedUsedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...(jest.requireActual("react-router-dom")),
+  useNavigate: () => mockedUsedNavigate
+}));
+
 describe("<CardList />", () => {
   let props: CardListProps;
   describe("should render a podcast list", () => {

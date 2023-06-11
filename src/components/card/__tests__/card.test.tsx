@@ -5,6 +5,12 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { NO_IMAGE_ALT } from "../../../helpers/constants";
 
+const mockedUsedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...(jest.requireActual("react-router-dom")),
+  useNavigate: () => mockedUsedNavigate
+}));
+
 describe("<Card />", () => {
   let props: CardProps;
   describe("should render a card", () => {

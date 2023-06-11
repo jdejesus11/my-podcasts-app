@@ -6,6 +6,11 @@ import Header from "../header";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
 
+const mockedUsedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...(jest.requireActual("react-router-dom")),
+  useNavigate: () => mockedUsedNavigate
+}));
 
 describe("<Header />", () => {
   describe("should render a header", () => {

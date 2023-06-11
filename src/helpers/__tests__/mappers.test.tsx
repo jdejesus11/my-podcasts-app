@@ -1,4 +1,5 @@
 import { Episode, EpisodeType, Kind, PodcastAPI, PodcastType } from "../../models/models";
+import { listOfEpisodesAPI } from "../data";
 import { fromContentToEpisodes, fromContentToPodcasts } from "../mappers";
 
 describe("Mappers", () => {
@@ -24,21 +25,7 @@ describe("Mappers", () => {
   describe("Podcast Detail", () => {
     it("should maps podcast detail retrieved from the server to podcast detail list", () => {
       const response: EpisodeType = {
-        results: [
-          {
-            kind: Kind["podcast"],
-            trackId: "90123123",
-            trackName: "Love is love",
-            artistName: "Sasha Tran",
-          },
-          {
-            kind: Kind["podcast-episode"],
-            trackId: "90123123",
-            trackName: "Love is love",
-            artistName: "Sasha Tran",
-            trackTimeMillis: 6000,
-          },
-        ],
+        results: listOfEpisodesAPI,
       };
       const podcasts = fromContentToEpisodes(response);
       expect(podcasts.length).toBe(response.results.length);
