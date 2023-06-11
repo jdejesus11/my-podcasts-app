@@ -1,7 +1,7 @@
 import { PodcastType, ResponseType } from "../models/models";
 
 const PODCAST_URL = `https://api.allorigins.win/get?url=${encodeURIComponent(
-  "https://itunes.apple.com/search?media=podcast&limit=100&country=US&term=sasha"
+  "https://itunes.apple.com/search?media=podcast&limit=100&country=US&term=andrew"
 )}`;
 
 export const fetchMostRelevantPodcastService = async () => {

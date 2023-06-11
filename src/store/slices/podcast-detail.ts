@@ -13,6 +13,7 @@ export const podcastDetailInitialState: PodcastDetailSlice = {
 
 export const fetchPodcastDetail = createAsyncThunk("", async (podcastId: string) => {
   const response = await fetchPodcastDetailService(podcastId);
+  console.log(response)
   return fromContentToEpisodes(response);
 });
 

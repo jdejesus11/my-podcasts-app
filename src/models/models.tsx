@@ -28,7 +28,8 @@ export interface PodcastAPI {
     trackTimeMillis: number,
     artworkUrl600: string,
     genres: string[],
-    primaryGenreName: string
+    primaryGenreName: string,
+    episodeUrl?: string
 }
 
 export interface EpisodeAPI {
@@ -42,7 +43,8 @@ export interface EpisodeAPI {
   episodeContentType: string,
   trackViewUrl: string,
   trackTimeMillis: number,
-  releaseDate: string
+  releaseDate: string,
+  episodeFileExtension?: string,
 }
 
 export type PodcastType = {
@@ -74,4 +76,5 @@ export interface Episode extends Multimedia {
   duration?: string;
   audioURL?: string;
   episodeFileExtension?: string;
+  episodeContentType?: string
 }

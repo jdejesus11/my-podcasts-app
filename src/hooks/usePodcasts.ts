@@ -32,7 +32,8 @@ export const usePodcasts = () => {
         dispatch(activateStatus(null));
       }
     }
-    fetchData();
+
+    fetchData()
   }, []);
 
   const data = useSelector(selectPodcasts);

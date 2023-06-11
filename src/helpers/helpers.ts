@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { Episode } from '../models/models';
 
 /**
  * Formats date in UTC (YYY-MM-DDTHH-MM-SSZ) to en-us time format MM/DD/YYYY
@@ -20,4 +21,25 @@ export const toMinutesAndSecods = (millis: number) => {
     return minutes + ":" + (Number(seconds) < 10 ? '0' : '') + seconds;
 }
 
+/**
+ * Calculates time diffferences in hours
+ * @param firstMiliseconds time in miliseconds
+ * @param secondMiliseconds time in miliseconds
+ * @returns hours between them
+ */
+export const getHourBetweenMiliseconds = (firstMiliseconds:number, secondMiliseconds: number) => {
+    const hours = Math.floor((firstMiliseconds - secondMiliseconds) / 3600000);
+    return hours < 0 ? -1 * hours : hours;
+}
 
+/**
+ * Determines if hours is greater than 24 hours
+ * @param hours time in hours
+ * @returns true or false
+ */
+export const fetchDataFromServer = (hours: number) => hours > 24;
+
+
+export const isStringEmpty = (value?:string) => {
+    return /^\s*$/.test(value);
+};

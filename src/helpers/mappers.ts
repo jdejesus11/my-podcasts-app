@@ -40,6 +40,9 @@ export const fromContentToEpisodes = (data: EpisodeType) => {
       duration: toMinutesAndSecods(item.trackTimeMillis ?? 0),
       date: item.releaseDate ? toDate(item.releaseDate) : null,
       title: item.trackName,
+      audioURL: item?.episodeUrl,
+      episodeFileExtension: "episodeFileExtension" in item ? item?.episodeFileExtension : null,
+      episodeContentType: "episodeContentType" in item ? item?.episodeContentType : null
     } as Episode;
   });
 };
