@@ -13,7 +13,8 @@ export const podcastsInitialState: PodcastSlice = {
 
 export const fetchMostRelevantPodcast = createAsyncThunk('', async () => {
     const response = await fetchMostRelevantPodcastService()
-    return fromContentToPodcasts(response);
+    const podcasts = fromContentToPodcasts(response);
+    return podcasts;
 })
 
 export const podcastsSlice = createSlice({

@@ -78,3 +78,8 @@ export interface Episode extends Multimedia {
   episodeFileExtension?: string;
   episodeContentType?: string
 }
+
+export interface FormattedData {
+  createdAt: number,
+  data: Podcast[] | Episode[]
+}

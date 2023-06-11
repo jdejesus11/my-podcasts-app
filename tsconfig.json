@@ -12,6 +12,6 @@
         "moduleResolution": "node",
         "isolatedModules": false
     },
-    "include": ["src/**/*", "*.ts", "*.tsx", "mocks", "mocks"],
-    "exclude": ["node_modules", "**/*.spec.ts", "assets", "dist", "./webpack.dev.js", "./webpack.common.js", "./webpack.prod.js"]
+    "include": ["src/**/*", "*.ts", "*.tsx"],
+    "exclude": ["mocks","node_modules", "**/*.spec.ts", "assets", "dist", "./webpack.dev.js", "./webpack.common.js", "./webpack.prod.js"]
 }
