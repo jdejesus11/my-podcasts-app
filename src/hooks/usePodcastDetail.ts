@@ -4,9 +4,11 @@ import { RootState, Dispatch, selectStatus, selectPodcastDetail } from "../store
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { activateStatus, Status } from "../store/slices/status";
-import { fetchPodcastDetail } from "../store/slices/podcast-detail";
+import { fetchPodcastDetail, initialize } from "../store/slices/podcast-detail";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { SERVICE_ERROR } from "../helpers/constants";
+import { retrieveData } from "../storage/storageAPI";
+import { Episode } from "../models/models";
 
 export const useAppDispatch: () => Dispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -24,14 +26,15 @@ export const usePodcastDetail = () => {
       try {
         dispatch(activateStatus(Status.FetchingData));
         const resultAction = await dispatch(fetchPodcastDetail(podcastId));
-        unwrapResult(resultAction);
+        const episodes = unwrapResult(resultAction);
         dispatch(activateStatus(null));
+        return episodes;
       } catch (error) {
         console.log(`${SERVICE_ERROR}: fetching podcast's detail`);
         dispatch(activateStatus(Status.ServiceFailed));
       }
     }
-    fetchData();
+    retrieveData(podcastId, fetchData, (data: Episode[] | Episode[]) => dispatch(initialize(data)));
   }, [episodeId, podcastId]);
 
   return [{ episodes: data.episodes, isLoading, fetchingFailed }];
