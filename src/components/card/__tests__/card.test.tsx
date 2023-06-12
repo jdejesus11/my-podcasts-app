@@ -1,14 +1,14 @@
 import React from "react";
 import Card, { CardProps } from "../card";
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { NO_IMAGE_ALT } from "../../../helpers/constants";
 
 const mockedUsedNavigate = jest.fn();
 jest.mock("react-router-dom", () => ({
-  ...(jest.requireActual("react-router-dom")),
-  useNavigate: () => mockedUsedNavigate
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockedUsedNavigate,
 }));
 
 describe("<Card />", () => {
@@ -31,6 +31,9 @@ describe("<Card />", () => {
 
       const altImage = screen.getByAltText(NO_IMAGE_ALT);
       expect(altImage).toBeInTheDocument();
+
+      fireEvent.click(title);
+      expect(mockedUsedNavigate).toHaveBeenCalled();
     });
   });
 });

@@ -2,7 +2,6 @@
 /** @type {import('@jest/types').Config.InitialOptions} */
 const config = {
   verbose: true,
-  jest: true,
   "testEnvironment": "jsdom",
   "moduleNameMapper": {
     "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/fileMock.js",
@@ -10,7 +9,12 @@ const config = {
   }, 
   "transform": {
     "\\.(tsx|ts)$": "babel-jest"
-  }
+  },
+  "coveragePathIgnorePatterns": [
+    "node_modules",
+    "./mocks",
+    "models"
+  ]
 };
 
 module.exports = config;
@@ -19,7 +23,6 @@ module.exports = config;
 module.exports = async () => {
   return {
     verbose: true,
-    jest: true,
     "testEnvironment": "jsdom",
     "moduleNameMapper": {
       "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/fileMock.js",
@@ -27,7 +30,12 @@ module.exports = async () => {
     }, 
     "transform": {
       "\\.(tsx|ts)$": "babel-jest"
-    }
+    },
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "./mocks",
+      "models"
+    ]
   };
 };
 
