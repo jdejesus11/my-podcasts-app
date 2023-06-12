@@ -26,7 +26,7 @@ export async function saveData(storageKey: string, fetchData: () => Promise<Podc
  * @param afterCallback  function to be executed if the data is retrieved from the local storage.
  * @returns
  */
-export async function retrieveData(
+export async function fetchDataWithStorage(
   storageKey: string,
   fetchData: () => Promise<Podcast[] | Episode[]>,
   afterCallback?: (data: Podcast[] | Episode[]) => void

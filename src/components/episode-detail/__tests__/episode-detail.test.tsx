@@ -4,6 +4,12 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
+const mockedUsedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...(jest.requireActual("react-router-dom")),
+  useNavigate: () => mockedUsedNavigate
+}));
+
 describe("<Episode detail />", () => {
   let props: EpisodeDetailProps;
   describe("should render a detail of a episode", () => {

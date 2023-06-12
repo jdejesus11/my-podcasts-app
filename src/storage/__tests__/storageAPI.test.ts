@@ -1,5 +1,5 @@
 import { listOfEpisodes, listOfPodcasts } from "../../helpers/data";
-import { PODCASTS_STORAGE_KEY, retrieveData, saveData } from "../storageAPI";
+import { PODCASTS_STORAGE_KEY, fetchDataWithStorage, saveData } from "../storageAPI";
 
 import localStorageMock from "../../../mocks/localStorageMock";
 import { toStorageFormat } from "../../helpers/helpers";
@@ -35,7 +35,7 @@ describe("Storage API", () => {
 
     it("should retrieve a list of podcasts from the local storage when less than 24 houras has passed by", async () => {
       window.localStorage.getItem = getItemMocked;
-      const storagedData = await retrieveData(storageKey, fetchDataMocked, afterCallbackMocked);
+      const storagedData = await fetchDataWithStorage(storageKey, fetchDataMocked, afterCallbackMocked);
       expect(fetchDataMocked).not.toHaveBeenCalled;
       expect(storagedData).toEqual(listOfPodcasts);
       expect(getItemMocked).toHaveBeenCalled();
@@ -44,7 +44,7 @@ describe("Storage API", () => {
 
     it("should retrieve a list of podcasts from the service when less than 24 houras has passed by", async () => {
       window.localStorage.getItem = getItemNoDataMocked;
-      const storagedData = await retrieveData(storageKey, fetchDataMocked, afterCallbackMocked);
+      const storagedData = await fetchDataWithStorage(storageKey, fetchDataMocked, afterCallbackMocked);
       expect(fetchDataMocked).toHaveBeenCalled;
       expect(storagedData).toEqual(listOfPodcasts);
       expect(getItemNoDataMocked).toHaveBeenCalled();
@@ -75,7 +75,7 @@ describe("Storage API", () => {
 
     it("should retrieve a podcast detail from the local storage when less than 24 houras has passed by", async () => {
       window.localStorage.getItem = getItemMocked;
-      const storagedData = await retrieveData(podcastId, fetchDataMocked, afterCallbackMocked);
+      const storagedData = await fetchDataWithStorage(podcastId, fetchDataMocked, afterCallbackMocked);
       expect(fetchDataMocked).not.toHaveBeenCalled;
       expect(storagedData).toEqual(listOfEpisodes);
       expect(getItemMocked).toHaveBeenCalled();
@@ -84,7 +84,7 @@ describe("Storage API", () => {
 
     it("should retrieve a podcast detail from the service when less than 24 houras has passed by", async () => {
       window.localStorage.getItem = getItemNoDataMocked;
-      const storagedData = await retrieveData(podcastId, fetchDataMocked, afterCallbackMocked);
+      const storagedData = await fetchDataWithStorage(podcastId, fetchDataMocked, afterCallbackMocked);
       expect(fetchDataMocked).toHaveBeenCalled;
       expect(storagedData).toEqual(listOfEpisodes);
       expect(getItemNoDataMocked).toHaveBeenCalled();

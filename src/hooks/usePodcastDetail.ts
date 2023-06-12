@@ -7,7 +7,7 @@ import { activateStatus, Status } from "../store/slices/status";
 import { fetchPodcastDetail, initialize } from "../store/slices/podcast-detail";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { SERVICE_ERROR } from "../helpers/constants";
-import { retrieveData } from "../storage/storageAPI";
+import { fetchDataWithStorage } from "../storage/storageAPI";
 import { Episode } from "../models/models";
 
 export const useAppDispatch: () => Dispatch = useDispatch;
@@ -34,7 +34,7 @@ export const usePodcastDetail = () => {
         dispatch(activateStatus(Status.ServiceFailed));
       }
     }
-    retrieveData(podcastId, fetchData, (data: Episode[] | Episode[]) => dispatch(initialize(data)));
+    fetchDataWithStorage(podcastId, fetchData, (data: Episode[] | Episode[]) => dispatch(initialize(data)));
   }, [episodeId, podcastId]);
 
   return [{ episodes: data.episodes, isLoading, fetchingFailed }];

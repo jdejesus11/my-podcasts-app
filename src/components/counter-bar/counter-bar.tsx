@@ -3,12 +3,13 @@ import "./counter-bar.scss";
 
 export interface CounterBarProps {
   title: string;
+  onClick?: () => void
 }
 
-const CounterBar = ({ title }: CounterBarProps) => {
+const CounterBar = ({ title, onClick }: CounterBarProps) => {
   return (
     <div className="counter-bar">
-      <span>{title}</span>
+      <span onClick={onClick}>{title}</span>
     </div>
   );
 };

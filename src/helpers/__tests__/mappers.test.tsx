@@ -1,4 +1,4 @@
-import { Episode, EpisodeType, Kind, PodcastAPI, PodcastType } from "../../models/models";
+import { Episode, EpisodeType, PodcastAPI, PodcastType } from "../../models/models";
 import { listOfEpisodesAPI } from "../data";
 import { fromContentToEpisodes, fromContentToPodcasts } from "../mappers";
 
