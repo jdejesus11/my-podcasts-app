@@ -19,7 +19,7 @@ const Card = ({ podcast }: CardProps) => {
 
   return (
     <li
-      className="card"
+      className="card is-clickable"
       onClick={() => {
         onClick(podcast.id)
       }}

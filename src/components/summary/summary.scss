@@ -17,7 +17,6 @@
         width: 128px;
         height: 128px;
         border-radius: 50%;
-        cursor: pointer;
     }
 
     &__row {
@@ -28,7 +27,6 @@
     {
         font-size: $medium-font-size;
         font-weight: 600;
-        cursor: pointer;
         @include truncated--text;
     }
 
@@ -37,7 +35,6 @@
         color: $medium-gray-color;
         font-size: $extra-small-font-size;
         font-style: italic;
-        cursor: pointer;
     }
 
     &__description

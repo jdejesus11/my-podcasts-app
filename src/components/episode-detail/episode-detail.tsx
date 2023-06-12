@@ -15,7 +15,7 @@ const EpisodeDetail = ({ episode }: EpisodeDetailProps) => {
   const [navigation] = useRouting();
   return (
     <div className="episode-detail">
-      <h2 className="episode-detail__title" onClick={() => navigation.goBack()} >{episode.title}</h2>
+      <h2 className="episode-detail__title" onClick={() => navigation.goBack()} ><span className="is-clickable">{episode.title}</span></h2>
       <p className="episode-detail__description">{`${!isStringEmpty(episode?.description) ? episode?.description : NO_AVAILABLE}`}</p>
       {episode.episodeContentType === SUPPORTED_MULTIMEDIA_TYPE && (
         <audio controls preload="none" autoPlay className="episode-detail__audio">

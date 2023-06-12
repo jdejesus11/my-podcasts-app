@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <h1 className="title" onClick={() => navigation.navigateTo("/")}>
+      <h1 className="title is-clickable" onClick={() => navigation.navigateTo("/")}>
         {APP_TITLE}
       </h1>
       {status === Status.FetchingData && <Spinner />}

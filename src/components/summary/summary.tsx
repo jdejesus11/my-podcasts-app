@@ -20,14 +20,14 @@ const Summary = ({ podcast }: SummaryProps) => {
   return (
     <div className="summary">
       <div className="summary__header" onClick={onClick}>
-        <img src={podcast?.thumbnailURL ?? defaultImage} alt={podcast.thumbnailAlt ?? NO_IMAGE_ALT} className="summary__thumbnail" />
+        <img src={podcast?.thumbnailURL ?? defaultImage} alt={podcast.thumbnailAlt ?? NO_IMAGE_ALT} className="summary__thumbnail is-clickable" />
       </div>
       <Separator />
       <div className="summary__row">
-        <h3 className="summary__title" onClick={onClick}>
+        <h3 className="summary__title is-clickable" onClick={onClick}>
           {podcast.title}
         </h3>
-        <p className="summary__author">{`By ${podcast?.author ?? UKNOWN}`}</p>
+        <p className="summary__author is-clickable">{`By ${podcast?.author ?? UKNOWN}`}</p>
       </div>
       <Separator />
       <div className="summary__row">

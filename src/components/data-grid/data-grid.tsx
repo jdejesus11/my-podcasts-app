@@ -27,14 +27,16 @@ const Row = ({ children, className }: RowProps) => {
 };
 
 const Link = ({ onClick, children }: LinkProps) => {
-  return <a onClick={onClick}>{children}</a>;
+  return (
+    <a className="is-clickable" onClick={onClick}>
+      {children}
+    </a>
+  );
 };
 
 const renderNoDataAvailable = () => (
   <Row className="table__no-data">
-    <Cell>
-      {NO_DATA_AVAILABLE}
-    </Cell>
+    <Cell>{NO_DATA_AVAILABLE}</Cell>
   </Row>
 );
 
@@ -44,8 +46,8 @@ const Grid = ({ children }: React.PropsWithChildren) => {
       <thead className="table__header">
         <tr className="table__row">
           <th className="table__header-cell table--expanded">Title</th>
-          <th className="table__header-cell table--centered">Date</th>
-          <th className="table__header-cell table--centered">Duration</th>
+          <th className="table__header-cell table--left">Date</th>
+          <th className="table__header-cell table--left">Duration</th>
         </tr>
       </thead>
       <tbody>{children}</tbody>
@@ -55,7 +57,7 @@ const Grid = ({ children }: React.PropsWithChildren) => {
 
 const DataGrid = ({ data }: DataGridProps<Episode>) => {
   const [navigate] = useRouting();
-  const path = useLocation()
+  const path = useLocation();
   return (
     <Grid>
       {data.map((item, key) => {
@@ -64,15 +66,15 @@ const DataGrid = ({ data }: DataGridProps<Episode>) => {
             <Cell className="table__cell table--expanded table--detail">
               <Link
                 onClick={() => {
-                    const url = `${path.pathname}/episodes/${item.id}`;
-                    navigate.navigateTo(url)
+                  const url = `${path.pathname}/episodes/${item.id}`;
+                  navigate.navigateTo(url);
                 }}
               >
                 {item.title}
               </Link>
             </Cell>
-            <Cell className="table__cell table--centered">{item.date}</Cell>
-            <Cell className="table__cell table--centered">{item.duration}</Cell>
+            <Cell className="table__cell">{item.date}</Cell>
+            <Cell className="table__cell">{item.duration}</Cell>
           </Row>
         );
       })}
