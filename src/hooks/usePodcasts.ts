@@ -2,12 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 import { RootState, Dispatch, selectPodcasts, selectStatus } from "../store/store";
 import { useEffect, useState } from "react";
-import { fetchMostRelevantPodcast, initialize } from "../store/slices/podcasts";
+import { fetchMostRelevantPodcast } from "../store/slices/podcasts";
 import { unwrapResult } from "@reduxjs/toolkit";
-import { PODCASTS_STORAGE_KEY, SERVICE_ERROR } from "../helpers/constants";
+import { SERVICE_ERROR } from "../helpers/constants";
 import { activateStatus, Status } from "../store/slices/status";
-import { Episode, Podcast } from "../models/models";
-import { fetchDataWithStorage } from "../storage/storageAPI";
 import { filterPodcastsByTitleOrAuthor } from "../helpers/helpers"
 
 export const useAppDispatch: () => Dispatch = useDispatch;
@@ -32,7 +30,8 @@ export const usePodcasts = () => {
       }
     }
 
-    fetchDataWithStorage(PODCASTS_STORAGE_KEY, fetchData, (data: Podcast[] | Episode[]) => dispatch(initialize(data)));
+    fetchData()
+    //fetchDataWithStorage(PODCASTS_STORAGE_KEY, fetchData, (data: Podcast[] | Episode[]) => dispatch(initialize(data)));
   }, []);
 
   const data = useSelector(selectPodcasts);

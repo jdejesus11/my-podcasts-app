@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fromContentToPodcasts } from "../../helpers/mappers";
+import { getHourBetweenMiliseconds } from "../../helpers/helpers";
 import { Podcast } from "../../models/models";
 import { fetchMostRelevantPodcastService } from "../../services/podcasts";
+import { fetchAndStoragePodcasts, fetchDataFromStorage, LIMIT_IN_HOURS, PODCASTS_STORAGE_KEY } from "../../storage/storageAPI";
 
 export  interface PodcastSlice {
     podcasts: Podcast[]
@@ -12,9 +13,20 @@ export const podcastsInitialState: PodcastSlice = {
 }
 
 export const fetchMostRelevantPodcast = createAsyncThunk('', async () => {
-    const response = await fetchMostRelevantPodcastService()
-    const podcasts = fromContentToPodcasts(response);
-    return podcasts;
+    const storagedPodcasts = fetchDataFromStorage(PODCASTS_STORAGE_KEY)
+
+    if (!storagedPodcasts){
+        return fetchAndStoragePodcasts(PODCASTS_STORAGE_KEY, fetchMostRelevantPodcastService);
+    }
+
+    const { createdAt, data } = storagedPodcasts;
+    const currentTime = Date.now();
+    const hours = getHourBetweenMiliseconds(currentTime, createdAt);
+    if (hours >= LIMIT_IN_HOURS) {
+        return fetchAndStoragePodcasts(PODCASTS_STORAGE_KEY, fetchMostRelevantPodcastService);
+    }
+    
+    return data as Podcast[];
 })
 
 export const podcastsSlice = createSlice({

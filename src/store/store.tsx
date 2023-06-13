@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { Podcast } from "../models/models";
+import loggerMiddleware from "./middlewares/loggerMiddleware";
 import { podcastDetailReducer } from "./slices/podcast-detail";
 import { podcastReducer } from "./slices/podcasts";
 import { StatusReducer } from "./slices/status";
@@ -14,6 +15,8 @@ const store = configureStore({
     podcastDetail: podcastDetailReducer,
     StatusReducer: StatusReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().prepend(loggerMiddleware.middleware)
 });
 
 export const selectEpisode = (episodeId: string) => (state: RootState) =>

@@ -1,4 +1,4 @@
-import { EpisodeAPI, Kind, Podcast, PodcastAPI } from "../models/models";
+import { EpisodeAPI, EpisodeType, Kind, Podcast, PodcastAPI } from "../models/models";
 
 export const listOfEpisodes = [
   {
@@ -113,3 +113,15 @@ export const listOfPodcastsAPI: Partial<EpisodeAPI | PodcastAPI>[] = [
     description: "Lorep Ipsum is a text",
   },
 ];
+
+export const episodeType: EpisodeType = {
+  results: [
+    ...listOfEpisodesAPI
+  ]
+}
+
+export const podcastsType: EpisodeType = {
+  results: [
+    ...listOfPodcastsAPI
+  ]
+}
